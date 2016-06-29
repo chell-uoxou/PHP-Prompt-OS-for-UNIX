@@ -15,7 +15,7 @@ class scriptCommand extends systemProcessing{
 		// var_dump($commands);
 		foreach ($extensionCommands as $key => $value) {
 			// $this->sendMessage("{$key}:拡張コマンド");
-			$path = $poPath . "\\root\\" . $value;
+			$path = $poPath . "/root/" . $value;
 			// echo $path . PHP_EOL;
 			if (array_key_exists($key,$commands)) {
 				$plsdel[] = $key;

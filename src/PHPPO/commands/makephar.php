@@ -26,8 +26,8 @@ class makephar extends systemProcessing{
 					$this->sendMessage("\x1b[38;5;203mAre you sure you want to compose the source of PHPPO that are currently running to the phar archive ?(y):");
 					$Confirm = trim(fgets(fopen("php://stdin", "r")));
 					if ($Confirm == "y") {
-						// $myPhar->compose(rtrim(dirname(__FILE__),"commands\\"),"PHPPO");
-						$fp = rtrim(trim(dirname(__FILE__)),"\commands\PHPPO") . "c\buildlog.log";
+						// $myPhar->compose(rtrim(dirname(__FILE__),"commands/"),"PHPPO");
+						$fp = rtrim(trim(dirname(__FILE__)),"/commands/PHPPO") . "c\buildlog.log";
 						if (!file_exists($fp)) {
 							touch($fp);
 							$this->sendMessage("\x1b[38;5;83mBuild log file created.\x1b[38;5;145m:" . $fp);
@@ -44,9 +44,9 @@ class makephar extends systemProcessing{
 						fclose($fp);
 						$this->sendMessage("\x1b[38;5;231m" .  "[" . date("\'y.m.d h:i:s") . "] PHP Prompt OS " . $version . " built. No. #" . $buildnumber);
 						$this->sendMessage("\x1b[38;5;227mCreateing...");
-						$pharpath = rtrim(dirname(__FILE__),"commands\src\PHPPO") . "\PHPPO-{$version}_#{$buildnumber}.phar";
+						$pharpath = rtrim(dirname(__FILE__),"commands/src/PHPPO") . "/PHPPO-{$version}_#{$buildnumber}.phar";
 						$phar = new Phar($pharpath, 0, 'PHPPO.phar');
-						$phar->buildFromDirectory(rtrim(dirname(__FILE__),"commands\src\PHPPO") . "\src");
+						$phar->buildFromDirectory(rtrim(dirname(__FILE__),"commands/src/PHPPO") . "/src");
 						$pharstat = stat($pharpath);
 						$this->sendMessage("\x1b[38;5;83mSuccess. \x1b[38;5;145m:" . $pharpath);
 						$this->sendMessage("File size:" . $pharstat["size"] . "byte");

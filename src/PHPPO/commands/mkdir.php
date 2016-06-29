@@ -24,8 +24,8 @@ class myMkdir extends systemProcessing{
 		for ($i=1; $i < $nameCount; $i++) {
 			$name .= $aryTipeTxt[$i] . " ";
 		}
-		if (!file_exists($currentdirectory . "\\" . $name)) {
-			mkdir($currentdirectory . "\\" . $name);
+		if (!file_exists($currentdirectory . "/" . $name)) {
+			mkdir($currentdirectory . "./" . $name);
 		}else {
 			$this->sendMessage("そのディレクトリは既に存在します！");
 		}

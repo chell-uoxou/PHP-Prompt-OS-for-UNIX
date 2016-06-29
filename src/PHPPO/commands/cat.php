@@ -18,7 +18,7 @@ class cat extends systemProcessing{
 		if ($pathCount == 0) {
 			$this->sendMessage("パラメーターが不足しています。");
 		}else {
-			$path = trim($currentdirectory) . "\\";
+			$path = trim($currentdirectory) . "/";
 			for ($i=1; $i < $pathCount; $i++) {
 				$path .= $aryTipeTxt[$i] . " ";
 			}

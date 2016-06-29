@@ -17,7 +17,7 @@ class currentdirectory extends systemProcessing{
 		global $po_cd;
 		$currentdirectory = trim($currentdirectory);
 		if ($path != "") {
-			$all_path = $currentdirectory . "\\" . $path;
+			$all_path = $currentdirectory . "/" . $path;
 		}else {
 			$all_path = $currentdirectory;
 		}

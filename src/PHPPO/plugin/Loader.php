@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__FILE__) . "/../system/System.php");
+include_once(dirname(__FILE__) . "./../system/System.php");
 $system = new systemProcessing;
 $commands = array();
 @$fileplugins = scandir(dirname(dirname(dirname(dirname(__FILE__)))) . '\root\plugins');

@@ -1,8 +1,8 @@
 <?php
-include_once dirname(__FILE__) . '/../display/display.php';
-include_once dirname(__FILE__) . '/../plugin/Manager.php';
-include_once 'environmentValues.php';
-include_once 'currentdirectory.php';
+include_once dirname(__FILE__) . './../display/display.php';
+include_once dirname(__FILE__) . './../plugin/Manager.php';
+include_once 'EnvironmentValues.php';
+include_once 'CurrentDirectory.php';
 $valuepros = new environmentVariables;
 $pluginpros = new pluginManager;
 
@@ -228,7 +228,7 @@ class myPhar extends systemProcessing{
 		foreach ($result as $path) {
 			$this->sendMessage("ファイルをスキャン中... : $path");
 		}
-		$pharfilepath = rtrim(dirname(__FILE__),"commands\src\PHPPO") . "\\" . "$phar_name.phar";
+		$pharfilepath = rtrim(dirname(__FILE__),"commands/src/PHPPO") . "/" . "$phar_name.phar";
 		$phar = new Phar($pharfilepath, 0);
 		if (!file_exists($pharfilepath)) {
 			$this->sendMessage("pharファイルを生成しています。:" . $pharfilepath);

@@ -19,7 +19,7 @@ class rmdir extends systemProcessing{
 				for ($i=1; $i < $strCount; $i++) {
 					$path .= $aryTipeTxt[$i] . " ";
 				}
-				$path = trim($currentdirectory . '\\' . $path);
+				$path = trim($currentdirectory . '/' . $path);
 				if (file_exists($path)) {
 					if (is_dir($path)) {
 						try {

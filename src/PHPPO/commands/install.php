@@ -18,10 +18,10 @@ class install extends systemProcessing{
 				$aryTipeTxt[1] = trim($aryTipeTxt[1]);
 				if ($aryTipeTxt[1] = "src") {
 					// try {
-					rename($poPath . "\src", $poPath . "\src_old");
-						// $oldsrcpath = trim($poPath . "\src");
+					rename($poPath . "/src", $poPath . "/src_old");
+						// $oldsrcpath = trim($poPath . "/src");
 						// $oldsrcpath_ = trim($oldsrcpath . "_old");
-						// $dir_name = "{$poPath}\src_old";
+						// $dir_name = "{$poPath}/src_old";
 						// if( !file_exists($dir_name) ){
 						// 	mkdir( $dir_name );
 						// }

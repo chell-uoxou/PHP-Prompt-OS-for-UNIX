@@ -17,16 +17,16 @@
 echo "Library loaded!\nPHP Prompt OS booting...\n";
 
 
-$first_time_boot = !file_exists(rtrim(dirname(__FILE__),"\PHPPO\src") . "\\root\bin\\" . 'systemdefinedvars.dat');
+$first_time_boot = !file_exists(rtrim(dirname(__FILE__),"/PHPPO/src") . "/root/bin/" . 'systemdefinedvars.dat');
 include_once "system/System.php";
-include_once 'display/display.php';
+include_once 'display/Display.php';
 include_once 'command/Command.php';
 $system = new systemProcessing;
 $display = new display;
 include_once 'plugin/Manager.php';
-include_once 'system\environmentValues.php';
-include_once 'system\currentdirectory.php';
-include_once 'system\Boot.php';
+include_once 'system/EnvironmentValues.php';
+include_once 'system/Currentdirectory.php';
+include_once 'system/Boot.php';
 
 
 
@@ -75,12 +75,12 @@ function bootSystem($tipe){
 	// curl_setopt($ch, CURLOPT_HEADER, false);
 	// $xml = curl_exec($ch);
 	// print_r($xml);
-	$poPath = rtrim(trim(dirname(__FILE__)),"\PHPPO\src");
+	$poPath = rtrim(trim(dirname(__FILE__)),"/PHPPO/src");
 	if ($currentdirectorymode == "on") {
-		$currentdirectory = $poPath . "\\root";
+		$currentdirectory = $poPath . "//root";
 		$system->sendMessage("Set current directory:{$currentdirectory}\n");
 	}
-	$fp = $poPath . "\src\buildlog.log";
+	$fp = $poPath . "/src/buildlog.log";
 	// $buildnumber = substr_count($file, PHP_EOL);
 	$data = file_get_contents($fp);
 	$data = explode( "\n", $data );
@@ -237,14 +237,14 @@ function readySetup($tipe){
 			mkdir( $dir_name );
 		}
 
-		$userfilepath = rtrim(dirname(__FILE__),"\PHPPO\src") ."\\root\bin\user.json";
+		$userfilepath = rtrim(dirname(__FILE__),"/PHPPO/src") ."/root/bin/user.json";
 		if (!file_exists($userfilepath)) {
 			touch($userfilepath);
 			$system->sendMessage("ユーザー設定用ファイルを出力しました。:" . $userfilepath);
 		}
 		chmod( $userfilepath, 0666 );
 
-		$userfilepath = rtrim(dirname(__FILE__),"\PHPPO\src") ."\\root\bin\\environmentVariables.dat";
+		$userfilepath = rtrim(dirname(__FILE__),"/PHPPO/src") ."/root/bin/environmentVariables.dat";
 		if (!file_exists($userfilepath)) {
 			touch($userfilepath);
 			$system->sendMessage("ユーザー設定用ファイルを出力しました。:" . $userfilepath);
@@ -257,25 +257,25 @@ function readySetup($tipe){
 		}
 		chmod( $file_name, 0666 );
 
-		$file_name = rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . "README.txt";
+		$file_name = rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . "README.txt";
 		if( !file_exists($file_name) ){
 			touch( $file_name );
 		}
 		chmod( $file_name, 0666 );
 
-		$logfilepath = rtrim(dirname(__FILE__),"\PHPPO\src") . "\\root\home\logs";
+		$logfilepath = rtrim(dirname(__FILE__),"/PHPPO/src") . "/root/home/logs";
 		if (!file_exists($logfilepath)) {
 			mkdir($logfilepath);
 			$system->sendMessage("ログ出力用フォルダを生成しました。:" . $logfilepath);
 		 }
 
-		 $scriptsfilepath = rtrim(dirname(__FILE__),"\PHPPO\src") . "\\root\scripts";
+		 $scriptsfilepath = rtrim(dirname(__FILE__),"/PHPPO/src") . "/root/scripts";
 		 if (!file_exists($scriptsfilepath)) {
 			 mkdir($scriptsfilepath);
 			 $system->sendMessage("スクリプト、ユーザー定義コマンド保存用フォルダを生成しました。:" . $scriptsfilepath);
 		 }
 
-		$logfilepath = rtrim(dirname(__FILE__),"\PHPPO\src") . "\\root\home\logs\\" . date('Y_m_d') . ".log";
+		$logfilepath = rtrim(dirname(__FILE__),"/PHPPO/src") . "/root/home/logs/" . date('Y_m_d') . ".log";
 	 	if (!file_exists($logfilepath)) {
 	 	touch($logfilepath);
 	    $system->sendMessage("ログ出力用ファイルを生成しました。:" . $logfilepath . PHP_EOL);
@@ -287,7 +287,7 @@ function readySetup($tipe){
 		$writeData = fopen($logfilepath,'a');
 		$pr_info = "INFO";
 	 	$pr_thread = "File";
-	 	$LICENSE = fopen(rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . 'LICENSE.txt', "w");
+	 	$LICENSE = fopen(rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . 'LICENSE.txt', "w");
 		$system->sendMessage("\x1b[38;5;145mライセンスファイルの更新を行っています...");
 	 	fwrite($LICENSE, "		┿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┿
 		│　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　│
@@ -304,7 +304,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see httpwww.gnu.orglicenses.");
 	 	fclose($LICENSE);
 		$system->sendMessage("\x1b[38;5;145m更新が終了しました。");
-		$LICENSE = fopen(rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . 'README.txt', "w");
+		$LICENSE = fopen(rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . 'README.txt', "w");
 		$system->sendMessage("\x1b[38;5;145mREADMEファイルの更新を行っています...");
 		fwrite($LICENSE,   '	■□━━━━━━━━━━━━━━━━━━━━━━━━━━□■
 	□■　　　　　　     　PHP Prompt OS 1　 　　　　 　　　■□
@@ -338,7 +338,7 @@ You should have received a copy of the GNU General Public License along with thi
 			　┗起動時にsrcに格納されているベースのプロセスを呼び出し、mintty.exeに結果を出力。');
 		fclose($LICENSE);
 		$system->sendMessage("\x1b[38;5;145m更新が終了しました。");
-		$file_name = rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . 'config.ini';
+		$file_name = rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . 'config.ini';
 		if (!file_exists($file_name)) {
 			touch($file_name);
 			$system->sendMessage("システム設定用ファイルを出力しました。:" . $file_name . PHP_EOL);
@@ -350,7 +350,7 @@ You should have received a copy of the GNU General Public License along with thi
 			[system]
 			logmode=on
 			saveenvironmentvalues=on
-			bootexec=\bin\welcome.sh
+			bootexec=/bin/welcome.sh
 			[display]
 			in_prompt=[%time] [%thread/%info]%cd>
 			out_prompt=[38;5;83m[%time][38;5;87m[%therad/%info]
@@ -367,7 +367,7 @@ You should have received a copy of the GNU General Public License along with thi
 				$pr_thread = "LOGIN";
 				$username = $system->sendMessage("ユーザー名を入力してください。:","input");
 				$user = $username;
-				$filename = rtrim(dirname(__FILE__),"\src\PHPPO") . "\\" . "user.json";
+				$filename = rtrim(dirname(__FILE__),"/src/PHPPO") . "/" . "user.json";
 				$json = file_get_contents($filename);
 				$config = json_decode($json,true);
 				if(empty($config[$username])){
@@ -394,7 +394,7 @@ You should have received a copy of the GNU General Public License along with thi
 			echo file_get_contents("LICENSE.txt") . "\n";
 			$LICENSE_agree = $system->sendMessage("ライセンスに同意しますか？(y/n):","input");
 			if($LICENSE_agree == "y"){
-				file_put_contents(dirname(dirname(dirname(__FILE__))) . '\root\bin\\' . "systemdefinedvars.dat", serialize($defined_vars));
+				file_put_contents(dirname(dirname(dirname(__FILE__))) . '/root/bin/' . "systemdefinedvars.dat", serialize($defined_vars));
 				startSetup();
 			}else{
 				echo "\nライセンスに同意してください\n";
@@ -417,11 +417,11 @@ You should have received a copy of the GNU General Public License along with thi
 		$aryScriptFiles = array();
 		$aryScripts = array();
 		// ディレクトリのパスを記述
-		$dir = rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . "scripts" ;
+		$dir = rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . "scripts" ;
 
 		// ディレクトリの存在を確認し、ハンドルを取得
 		$i = 0;
-		$handle = opendir(rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . "scripts" . "/");
+		$handle = opendir(rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . "scripts" . "/");
 		while (false !== ($file = readdir($handle))) {
 			if(strpos($file,'.') == false){
 				array_push($aryScriptFiles,$file);
@@ -492,7 +492,7 @@ standbyTipe();
 function endUserSetup($user, $password){
 	global $system;global $display;
 	global $systemconf_ini_array;
-	$filename = rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . "user.json";
+	$filename = rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . "user.json";
 	$json = file_get_contents($filename);
 	$config = json_decode($json,true);
 
@@ -510,7 +510,7 @@ function endUserSetup($user, $password){
 function loginSystem($user){
 	global $system;global $display;
 	global $systemconf_ini_array;
-	$filename = rtrim(dirname(__FILE__),"\PHPPO\src") . "/" . "user.json";
+	$filename = rtrim(dirname(__FILE__),"/PHPPO/src") . "/" . "user.json";
 	$json = file_get_contents($filename);
 	$password_data = json_decode($json,true);
 	$askPassword = $system->sendMessage($user . "のパスワードを入力してください。:","input");
@@ -554,12 +554,12 @@ function standbyTipe(){
 	$commandpros = new command;
 	$pluginpros->install();
 	// $system->sendMessage("\x1b[38;5;63m起動完了！helpコマンドでコマンド一覧を表示。");
-	// file_put_contents(dirname(dirname(dirname(__FILE__))) . '\root\bin\\' . "systemdefinedvars.dat", serialize($defined_vars));
+	// file_put_contents(dirname(dirname(dirname(__FILE__))) . '/root/bin/' . "systemdefinedvars.dat", serialize($defined_vars));
 	if (isset($systemconf_ini_array["system"]["bootexec"])) {
 		if ($systemconf_ini_array["system"]["bootexec"] != "") {
 			$bootexec = $systemconf_ini_array["system"]["bootexec"];
-			// echo "$poPath\\root\\$bootexec";
-			$aryTipeTxt = array("script","$poPath\\root\\$bootexec");
+			// echo "$poPath/root/$bootexec";
+			$aryTipeTxt = array("script","$poPath/root/$bootexec");
 			// var_dump($aryTipeTxt);
 			$script = new script;
 			$script->onCommand();
@@ -569,7 +569,7 @@ function standbyTipe(){
 	while (True) {
 		$system->readyInputEvent();
 		// var_dump($defined_vars);
-		file_put_contents(dirname(dirname(dirname(__FILE__))) . '\root\bin\\' . "systemdefinedvars.dat", serialize($defined_vars));
+		file_put_contents(dirname(dirname(dirname(__FILE__))) . '/root/bin/' . "systemdefinedvars.dat", serialize($defined_vars));
 		$po_cd = str_replace(trim($poPath),"",trim($currentdirectory));
 		$stanby = True;
 		$display->setThread("PHPPO");

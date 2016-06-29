@@ -12,7 +12,7 @@ $system->sendMessage("Command loaded:");
 $dircommands = scandir(dirname(__FILE__) . '/../commands');
 $i = 0;
 foreach ($dircommands as $key => $value) {
-	$dircommands[$i] = dirname(dirname(__FILE__)) . '\commands\\' . $dircommands[$i];
+	$dircommands[$i] = dirname(dirname(__FILE__)) . '/commands/' . $dircommands[$i];
 	// $system->sendMessage($dircommands[$i]);
 	$i++;
 }

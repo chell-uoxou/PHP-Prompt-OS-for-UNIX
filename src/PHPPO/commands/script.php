@@ -29,7 +29,7 @@ class script extends systemProcessing{
 				////////////////////////////////script処理////////////////////////////////
 				////////////仕分け作業///////////////
 				$file = "";
-				$current_path = trim($currentdirectory) . "\\" . $name;
+				$current_path = trim($currentdirectory) . "/" . $name;
 				if (file_exists($current_path)) {
 					$file = file_get_contents($current_path, true);
 				}else {
