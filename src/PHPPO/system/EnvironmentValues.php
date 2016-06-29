@@ -10,7 +10,7 @@ class environmentVariables extends systemProcessing{
 		global $environmentVariables;
 		global $savevaluesmode;
 		if ($savevaluesmode == "on") {
-			$environmentVariables = unserialize(file_get_contents(dirname(dirname(dirname(dirname(__FILE__)))) . '\root\bin\\' . "environmentVariables.dat"));
+			$environmentVariables = unserialize(file_get_contents(dirname(dirname(dirname(dirname(__FILE__)))) . '/root/bin/' . "environmentVariables.dat"));
 		}
 		$environmentVariables[$name] = $value;
 		if ($savevaluesmode == "on") {

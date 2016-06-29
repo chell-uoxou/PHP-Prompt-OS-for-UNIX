@@ -1,6 +1,6 @@
 <?php
-include_once dirname(__FILE__) . './../display/display.php';
-include_once dirname(__FILE__) . './../plugin/Manager.php';
+include_once dirname(dirname(__FILE__)) . '/display/Display.php';
+include_once dirname(dirname(__FILE__)) . '/plugin/Manager.php';
 include_once 'EnvironmentValues.php';
 include_once 'CurrentDirectory.php';
 $valuepros = new environmentVariables;

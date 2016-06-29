@@ -1,13 +1,13 @@
 <?php
-$systemconf_ini_array = parse_ini_file(dirname(dirname(dirname(dirname(__FILE__)))) . "\\config.ini", true);
+$systemconf_ini_array = parse_ini_file(dirname(dirname(dirname(dirname(__FILE__)))) . "/config.ini", true);
 //異常終了check
 $echoFunc = "on";
 $valuepros = new environmentVariables;
 if ($systemconf_ini_array["dev"]["devmode"] != 1) {
-	@$files = scandir(rtrim(trim(dirname(__FILE__)),"\PHPPO\src") . "/root/home/logs/",1);
+	@$files = scandir(rtrim(trim(dirname(__FILE__)),"/PHPPO/src") . "/root/home/logs/",1);
 	// var_dump($files);
 	if ($files != false) {
-		$lines = file(rtrim(trim(dirname(__FILE__)),"\PHPPO\src") . "/root/home/logs/" . $files[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		$lines = file(rtrim(trim(dirname(__FILE__)),"/PHPPO/src") . "/root/home/logs/" . $files[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 		$line = end($lines);
 		if ($line != "PHPPO was completed successfully."){
 			$system->sendMessage("システムが異常終了していた可能性があります！！","critical");

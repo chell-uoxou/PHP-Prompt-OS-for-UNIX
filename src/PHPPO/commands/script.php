@@ -15,7 +15,7 @@ class script extends systemProcessing{
 		global $commands;
 		global $currentdirectory;
 		global $commandpros;
-		$display = new display;
+		global $display;
 		$pathCount = count($aryTipeTxt);
 		if ($pathCount <= 1) {
 			$this->sendMessage("パラメーターが不足しています。");

@@ -25,7 +25,7 @@ $system = new systemProcessing;
 $display = new display;
 include_once 'plugin/Manager.php';
 include_once 'system/EnvironmentValues.php';
-include_once 'system/Currentdirectory.php';
+include_once 'system/CurrentDirectory.php';
 include_once 'system/Boot.php';
 
 
@@ -77,7 +77,7 @@ function bootSystem($tipe){
 	// print_r($xml);
 	$poPath = rtrim(trim(dirname(__FILE__)),"/PHPPO/src");
 	if ($currentdirectorymode == "on") {
-		$currentdirectory = $poPath . "//root";
+		$currentdirectory = $poPath . "/root";
 		$system->sendMessage("Set current directory:{$currentdirectory}\n");
 	}
 	$fp = $poPath . "/src/buildlog.log";
@@ -558,8 +558,8 @@ function standbyTipe(){
 	if (isset($systemconf_ini_array["system"]["bootexec"])) {
 		if ($systemconf_ini_array["system"]["bootexec"] != "") {
 			$bootexec = $systemconf_ini_array["system"]["bootexec"];
-			// echo "$poPath/root/$bootexec";
-			$aryTipeTxt = array("script","$poPath/root/$bootexec");
+			$bootexecpath = trim($poPath . "/root/" . $bootexec);
+			$aryTipeTxt = array("script",$bootexec);
 			// var_dump($aryTipeTxt);
 			$script = new script;
 			$script->onCommand();
